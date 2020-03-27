@@ -1,0 +1,8 @@
+# This is an example file rename this file to ansible.cfg and place it in the ansible root directory
+
+[defaults]
+ansible_managed       = Ansible managed file, do not edit directly
+remote_user           = ubuntu
+private_key_file      = /Users/{your_local_username}/.ssh/id_rsa
+
+retry_files_enabled = true

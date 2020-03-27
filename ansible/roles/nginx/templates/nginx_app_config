@@ -1,0 +1,48 @@
+upstream puma_production {
+  server unix:{{ deploy_dir  }}{{ deploy_app_name }}/shared/tmp/sockets/puma.sock fail_timeout=0;
+}
+
+server {
+  listen 80;
+
+  server_name {{ host }};
+
+  root {{ deploy_dir  }}{{ deploy_app_name }}/current/public;
+  try_files $uri/index.html $uri @puma_production;
+
+  error_page 500 502 503 504 /500.html;
+  client_max_body_size 4G;
+  keepalive_timeout 10;
+
+  location @puma_production {
+    proxy_redirect off;
+    proxy_pass http://puma_production;
+
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header X-Forwarded-Ssl on;
+    proxy_set_header X-Forwarded-Host $host;
+
+    access_log {{ deploy_dir  }}{{ deploy_app_name }}/shared/log/nginx.access.log;
+    error_log {{ deploy_dir  }}{{ deploy_app_name }}/shared/log/nginx.error.log;
+  }
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  location /cable {
+    proxy_pass http://puma_production;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+
+  if ($request_method !~ ^(GET|HEAD|PUT|PATCH|POST|DELETE|OPTIONS)$ ){
+    return 405;
+  }
+}
+

@@ -1,0 +1,5 @@
+{{ rails_logrotate_path }}/{{ rails_logrotate_mask }} {
+{% for option in rails_logrotate_options %}
+  {{ option }}
+{% endfor %}
+}

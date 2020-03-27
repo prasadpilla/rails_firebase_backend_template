@@ -1,0 +1,12 @@
+---
+- name: Create deploy dir
+  file: path={{ deploy_dir }}{{ deploy_app_name }} state=directory owner={{ deploy_user }} group={{ deploy_user }}
+
+- name: Create shared directories
+  file:
+    path: "{{ deploy_dir }}/{{deploy_app_name }}/{{ item }}"
+    state: directory
+    owner: "{{ deploy_user }}"
+    group: "{{ deploy_user }}"
+  with_items: "{{ shared_dirs }}"
+

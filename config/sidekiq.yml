@@ -1,0 +1,6 @@
+---
+:concurrency: 30
+:queues:
+  - [default, 3]
+  - [low, 1]
+:schedule:

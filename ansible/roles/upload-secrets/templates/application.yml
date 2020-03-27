@@ -1,0 +1,43 @@
+host: "{{ host }}"
+
+# Secret Key base
+secret_key_base: "{{ secret_key_base }}"
+
+# Device secret
+devise_secret_key: "{{ devise_secret_key }}"
+
+APPSIGNAL_APP_ENV: "{{ appsignal_app_env }}"
+
+# ======== AWS ========
+
+# Database
+database_host: "{{ database_host }}"
+database_username: "{{ database_username }}"
+database_password: "{{ database_password }}"
+
+# Cache
+cache_server_url: "{{ cache_server_url }}"
+
+# SES
+smtp_host: "{{ smtp_host }}"
+smtp_port: "{{ smtp_port }}"
+smtp_tls: "{{ smtp_tls }}"
+smtp_username: "{{ smtp_username }}"
+smtp_password: "{{ smtp_password }}"
+
+# SideKiq
+sidekiq_web_user: "{{ sidekiq_web_user }}"
+sidekiq_web_password: "{{ sidekiq_web_password }}"
+
+# MSG91
+MSG91_AUTH_KEY: "{{ MSG91_AUTH_KEY }}"
+MSG91_SENDER_ID: "{{ MSG91_SENDER_ID }}"
+
+# S3
+s3_access_key_id: "{{ s3_access_key_id }}"
+s3_secret_access_key: "{{ s3_secret_access_key }}"
+s3_region: "{{ s3_region }}"
+s3_bucket_name: "{{ s3_bucket_name }}"
+
+fcm_server_key: "{{ fcm_server_key }}"
+firebase_admin_api_key: "{{ firebase_admin_api_key }}"

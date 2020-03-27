@@ -1,0 +1,12 @@
+---
+- name: gather facts
+  setup:
+
+- name: Perform Safe Upgrade
+  apt: upgrade=safe update_cache=yes
+
+- import_tasks: swap.yml
+  when: swap_enabled is defined and swap_enabled == true
+- import_tasks: tools.yml
+- import_tasks: locale.yml
+- import_tasks: security.yml

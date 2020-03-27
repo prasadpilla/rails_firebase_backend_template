@@ -1,0 +1,21 @@
+host: "localhost"
+
+# Secret Key base
+secret_key_base: "771da443811aeb634c8b242642a055df1d7177684d185db56f9e026b9d96de383a86a7d748422e56b451528877ebe9fa8246ab2698f7000905f1102d24b3c076"
+
+# Device secret
+devise_secret_key: "e8d635598c4d5f3af51236472200b1e43a99e20480cf6ade5d3e2b51930e55371b576d659b8a19e90a91d05692445cf2c15fa97db90dfe59fa2cfce4db511be8"
+
+# Cache
+cache_server_url: "redis://localhost:6379/0"
+
+# SideKiq
+sidekiq_web_user: "admin"
+sidekiq_web_password: "sidkiq@123"
+
+# S3
+s3_access_key_id: ""
+s3_secret_access_key: ""
+s3_region: ""
+s3_bucket_name: "railsapp-local-images"
+

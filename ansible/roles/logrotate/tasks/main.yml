@@ -1,0 +1,13 @@
+---
+- name: Install logrotate packages
+  apt:
+    name: logrotate
+    update_cache: yes
+    state: present
+    cache_valid_time: 86400
+
+- name: configure
+  template:
+    dest: "{{ etc_logrotate_path }}/{{ rails_logrotate_name }}"
+    src: "logrotate.j2"
+    force: yes

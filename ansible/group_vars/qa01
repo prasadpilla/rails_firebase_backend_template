@@ -1,0 +1,12 @@
+---
+host: railsapp.com
+deploy_server_hostname: railsapp.com
+cache_server_url: ""
+s3_region: us-east-1
+s3_bucket_name: ''
+s3_access_key_id: ''
+appsignal_app_env: qa01
+smtp_host: 'email-smtp.us-east-1.amazonaws.com'
+smtp_port: '25'
+smtp_tls: 'true'
+smtp_username: ''

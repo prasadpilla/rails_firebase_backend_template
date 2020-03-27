@@ -1,0 +1,39 @@
+---
+# Server Timzone + Locale
+timezone: UTC
+locale: en_US.UTF-8
+
+# Swap
+# Uncomment here and in /roles/common/tasks/main.yml
+swap_enabled: true
+swap_file_path: /swapfile
+swap_file_size_kb: 1024
+
+# General settings
+deploy_app_name: railsapp
+deploy_dir: /home/deploy/
+deploy_user: deploy
+deploy_password: "{{ deploy_password }}"
+shared_dirs:
+  - releases
+  - repo
+  - shared
+  - shared/config
+  - shared/log
+  - shared/public
+  - shared/tmp
+
+RAILS_APP_LOG_PATH: "/home/deploy/"{{ deploy_app_name }}"/shared/log"
+
+# Authorized Hosts
+# This copies your local public key to the remote machine
+# for password less login. Modify this!
+ssh_public_key_files:
+  - ~/.ssh/id_rsa.pub
+
+# Ruby
+ruby_version: 2.5.1
+
+# Node.js
+NODEJS_VERSION: "10"
+ansible_distribution_release: "xenial" #trusty

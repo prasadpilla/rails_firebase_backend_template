@@ -1,0 +1,3 @@
+---
+- name: Copy application.yml
+  template: src=application.yml dest={{ deploy_dir }}{{ deploy_app_name }}/shared/config/application.yml owner={{ deploy_user }} group={{ deploy_user }}

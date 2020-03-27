@@ -1,0 +1,10 @@
+---
+- name: Replace the SSH public key file
+  copy: content="{{ git_repo_ssh_access_public_key }}"
+        dest="/home/{{ deploy_user }}/.ssh/id_rsa.pub"
+        mode=0644
+
+- name: Replace the SSH private key file
+  copy: content="{{ git_repo_ssh_access_private_key }}"
+        dest="/home/{{ deploy_user }}/.ssh/id_rsa"
+        mode=0600

@@ -1,0 +1,33 @@
+# Install python and aptitude on the target machines (apt-get install python aptitude)
+# Copy ssh public key to machines (ssh-copy-id user@host)
+---
+- name: Install Rails Server
+  hosts: webservers
+  vars_files:
+      - "secrets/common.yml"
+      - "secrets/{{ environment_name }}.yml"
+      - "group_vars/{{ environment_name }}"
+
+  # After initial provisioning, use deploy instead of root
+#  remote_user: root
+  remote_user: deploy
+  become: yes
+  become_method: sudo
+  gather_facts: no # don't gather facts because /usr/bin/python isn't set
+  pre_tasks:
+    - name: apt-get update
+      raw: apt-get update -qq
+    - name: install python 2.7 and aptitude
+      raw: apt-get install -qq python2.7 aptitude
+    - name: set python 2.7 as default
+      raw: update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+  roles:
+    - { role: 'common', tags: 'common' }
+    - { role: 'nodejs', tags: 'nodejs' }
+    - { role: 'deploy-user', tags: 'deploy-user' }
+    - { role: 'git-repo-access', tags: 'git-repo-access' }
+    - { role: 'nginx', tags: 'nginx' }
+    - { role: 'rvm-ruby', tags: 'rvm-ruby' }
+    - { role: 'rails', tags: 'rails' }
+    - { role: 'upload-secrets', tags: 'upload-secrets' }
+    - { role: 'logrotate', tags: 'logrotate' }
