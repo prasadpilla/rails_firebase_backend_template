@@ -77,6 +77,21 @@ rails development_tasks:seed_dev_data
 rails s
 ```
 
+## Configure new machines
+
+This needs to be run only once when new machines are added, app can be deployed using capistrano for subsequent deployments.
+
+For test environment
+
+```shell
+ ansible-playbook ansible/site.yml -i ansible/inventory/qa01 --ask-vault-pass --extra-vars environment_name=qa01
+```
+
+For production environment (Don't deploy without admin's approval)
+```shell
+ ansible-playbook ansible/site.yml -i ansible/inventory/prod --ask-vault-pass --extra-vars environment_name=prod
+```
+
 ## Deploy
 
 
