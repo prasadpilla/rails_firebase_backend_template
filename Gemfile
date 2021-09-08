@@ -62,7 +62,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Better Errors replaces the standard Rails error page with a much better and more useful error page
-  gem 'better_errors', '~> 2.4'
+  gem 'better_errors', '~> 2.8'
   # Retrieve the binding of a method's caller. Can also retrieve bindings even further up the stack.
   gem 'binding_of_caller', '~> 0.8.0'
   # Profiling toolkit for Rack applications with Rails integration. Client Side profiling, DB profiling and Server profiling.
