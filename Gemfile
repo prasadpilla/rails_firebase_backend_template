@@ -9,7 +9,7 @@ gem 'rack', github: 'rack/rack', branch: 'master'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'will_paginate', '~> 3.1.0'
 gem 'geokit-rails', '>= 2.3.1'
 gem 'active_model_serializers', '~> 0.10.10'
